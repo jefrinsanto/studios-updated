@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b0d17;
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+::selection {
+  background: #a855f7;
+  color: #fff;
+}
+
+/* Visible focus ring for keyboard navigation — default outlines are nearly
+   invisible against this dark theme, so give every interactive element a
+   clear, on-brand ring instead of removing outlines outright. */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link: invisible until focused (keyboard/screen-reader only) */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  background: #3b82f6;
+  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0d17;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #a855f7);
+  border-radius: 999px;
+}
+
+/* Reusable component-level classes */
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .gradient-text {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-gradient px-7 py-3.5
+      font-display text-sm font-semibold text-white shadow-glow transition-transform duration-300
+      hover:scale-[1.03] active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03]
+      px-7 py-3.5 font-display text-sm font-semibold text-white/90 backdrop-blur-md transition-colors
+      duration-300 hover:border-white/30 hover:bg-white/[0.07];
+  }
+
+  .section-eyebrow {
+    @apply text-sm font-medium tracking-wide text-electric/90;
+  }
+}
+
+@keyframes barGrow {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+.animate-bar-grow {
+  transform-origin: bottom;
+  animation: barGrow 2.4s ease-out infinite alternate;
+}
+
+@keyframes blink {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.animate-blink {
+  animation: blink 1.1s step-end infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}

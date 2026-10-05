@@ -14,7 +14,7 @@ export default function Founder() {
           {/* Placeholder avatar — no real founder photo supplied */}
           <div className="flex justify-center lg:justify-start">
             <div className="flex h-28 w-28 items-center justify-center rounded-full bg-brand-gradient font-display text-3xl font-bold text-white shadow-glow sm:h-32 sm:w-32">
-              IS
+              JS
             </div>
           </div>
 
